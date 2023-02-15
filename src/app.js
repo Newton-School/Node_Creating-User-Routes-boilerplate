@@ -19,7 +19,7 @@ The response should be in the following format:
                 "name": "James B",
                 "email": "jamesb@example.com"
             },
-            ....
+            ...
         ]
     }
 }*/
@@ -49,7 +49,7 @@ The response should be in the following format:
         }
     }
 }
-Return a 404 error when user is not found. 
+Return 404 error when user is not found. 
 */
 app.get("/api/v1/users/:id", (req, res) => {
     try {
@@ -78,7 +78,7 @@ The response should be in the following format:
     }
 }
 Generate a new id using the id of the last user in the database, increment it by 1
-Return a 404 error when the email or name is missing 
+Return a 400 error when the email or name is missing 
 */
 app.post("/api/v1/users/", (req, res) => {
     try {
@@ -112,6 +112,7 @@ The response should be in the following format:
     }
 }
 req.body can contain both name and email as well. Update the data based on the parameters recieved in req.body
+Return a 404 error if the user is missing, with the following message 
 {
     "message": "User not Found"
 }
